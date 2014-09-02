@@ -1,5 +1,6 @@
 package app;
 
+import app.util.MessageLoader;
 import app.vo.Student;
 
 import java.io.BufferedReader;
@@ -13,6 +14,8 @@ public class InsertView {
     String userStr;
     Student student;
 
+    MessageLoader loader = MessageLoader.getInstance();
+
     public InsertView(BufferedReader br, Student student) {
         this.br = br;
         this.student = student;
@@ -22,26 +25,25 @@ public class InsertView {
 
         System.out.println("========== 학생 등록 ==========");
         System.out.println("1. 이전 메뉴");
-        System.out.println("==============================");
+        System.out.println("==========================");
 
-        student.setName(inputStudentInfo(Message.NAME, Message.ERROR_MSG_NAME));
+        student.setName(inputStudentInfo(loader.getString("name"), loader.getString("errMsg")));
         if(student.getName() == null) return null;
-        student.setNo(inputStudentInfo(Message.NO, Message.ERROR_MSG_NO));
+        student.setNo(inputStudentInfo(loader.getString("no"), loader.getString("errMsg")));
         if(student.getNo() == null) return null;
-        student.setMajor(inputStudentInfo(Message.MAJOR, Message.ERROR_MSG_MAJOR));
+        student.setMajor(inputStudentInfo(loader.getString("major"), loader.getString("errMsg")));
         if(student.getMajor() == null) return null;
-        student.setMobile(inputStudentInfo(Message.MOBILE, Message.ERROR_MSG_MOBILE));
+        student.setMobile(inputStudentInfo(loader.getString("mobile"), loader.getString("errMsg")));
         if(student.getMobile() == null) return null;
 
         return student;
     }
 
-    public String inputStudentInfo(String item, String msg) {
-
+    public String inputStudentInfo(String item, String errMsg) {
+        String msg = String.format(errMsg,item);
         boolean isNext = false;
-        String title = String.format(Message.TEXT_FORMAT, item);
             do {
-                System.out.print(title);
+                System.out.print(item);
                 try {
                     userStr = br.readLine();
                     if(userStr.equals("1"))

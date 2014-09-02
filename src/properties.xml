@@ -3,7 +3,8 @@
 <properties>
     <entry key="name">이름</entry>
     <entry key="no">학번</entry>
-    <entry key="major">학번</entry>
+    <entry key="major">학과</entry>
     <entry key="mobile">전화번호</entry>
     <entry key="errMsg">%s 은(는) 반드시 입력 해야 합니다</entry>
+    <entry key="line">===============================</entry>
 </properties>

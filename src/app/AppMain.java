@@ -24,7 +24,7 @@ public class AppMain {
         MessageLoader loader = MessageLoader.getInstance();
 
             try {
-                loader.initProps("properties.xml");
+                loader.initProps("/properties.xml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -44,13 +44,13 @@ public class AppMain {
         List<Student> list;
 
         do {
-            System.out.println("===============================");
+            System.out.println(loader.getString("line"));
             System.out.println("1. 조회");
             System.out.println("2. 등록");
             System.out.println("3. 삭제");
             System.out.println("4. 전체 조회");
             System.out.println("0. 종료");
-            System.out.println("===============================");
+            System.out.println(loader.getString("line"));
 
             try {
                 userStr = br.readLine();
