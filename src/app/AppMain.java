@@ -3,11 +3,13 @@ package app;
 import app.dao.StudentDao;
 import app.mybatis.MybatisConnectionFactory;
 import app.vo.Student;
+import jdk.nashorn.internal.objects.NativeArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * Created by zoohwang on 14. 8. 28.
@@ -28,12 +30,14 @@ public class AppMain {
         StudentDao studentDao = new StudentDao(MybatisConnectionFactory.getSqlSessionFactory());
 
         Student student = new Student();
+        List<Student> list;
 
         do {
             System.out.println("===============================");
             System.out.println("1. 조회");
             System.out.println("2. 등록");
             System.out.println("3. 삭제");
+            System.out.println("4. 전체 조회");
             System.out.println("0. 종료");
             System.out.println("===============================");
 
@@ -56,10 +60,7 @@ public class AppMain {
                     String searchName = sv.searchStudent();
                     student = studentDao.selectById(searchName);
                     if(student != null) {
-                        logger.info("조회 결과 : " + student.getName() + " / "
-                                + student.getNo() + " / "
-                                + student.getMajor() + " / "
-                                + student.getMobile());
+                        logger.info("조회 결과 : " + student.toString());
                     }
                     break;
 
@@ -69,10 +70,7 @@ public class AppMain {
                     InsertView iv = new InsertView(br, student);
                     student = iv.insertStudent();
                     if(student != null) {
-                        logger.info("insert complet : " + student.getName() + " / "
-                                + student.getNo() + " / "
-                                + student.getMajor() + " / "
-                                + student.getMobile());
+                        logger.info("insert complet : {}", student.toString());
                     }
                     //DB insert
                     studentDao.insert(student);
@@ -85,6 +83,12 @@ public class AppMain {
                     studentDao.delete(deleteName);
                     break;
 
+                case 4:
+                    list = studentDao.selectAll();
+                    for(Student s : list) {
+                        System.out.println(s.toString());
+                    }
+                    break;
                 case 0:
                     System.out.println("종료");
                     break;
