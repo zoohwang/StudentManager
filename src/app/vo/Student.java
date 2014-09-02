@@ -1,13 +1,14 @@
 package app.vo;
 
-import sun.nio.cs.ext.MacArabic;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * Created by zoohwang on 14. 8. 28.
  */
+
+
 public class Student {
 
     /**
@@ -61,5 +62,16 @@ public class Student {
     public void setMobile(String mobile) {
 
         this.mobile = mobile.replaceAll("[^\\d]", "");
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Student{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", major='").append(major).append('\'');
+        sb.append(", no='").append(no).append('\'');
+        sb.append(", mobile='").append(mobile).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -1,8 +1,11 @@
 package app.dao;
 
+import app.AppMain;
 import app.vo.Student;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -10,6 +13,8 @@ import java.util.List;
  * Created by zoohwang on 14. 9. 1.
  */
 public class StudentDao {
+
+    final static Logger logger = LoggerFactory.getLogger(AppMain.class);
 
     private SqlSessionFactory sqlSessionFactory = null;
 
@@ -26,7 +31,8 @@ public class StudentDao {
         } finally {
             session.close();
         }
-        System.out.println("selectAll() --> " + list);
+
+        logger.info("selectAll() --> " + list);
         return list;
     }
 
@@ -39,7 +45,8 @@ public class StudentDao {
         } finally {
             session.close();
         }
-        System.out.println("selectById(" + name + ") --> " + student);
+        logger.info("selectById(" + name + ") --> " + student);
+        logger.info("selectById({}) --> {}", name, student);
         return student;
     }
 
@@ -53,7 +60,7 @@ public class StudentDao {
             session.commit();
             session.close();
         }
-        System.out.println("insert(" + student + ") --> " + student.getName());
+        logger.info("insert(" + student + ") --> " + student.getName());
         return id;
     }
 
@@ -67,7 +74,7 @@ public class StudentDao {
             session.commit();
             session.close();
         }
-        System.out.println("update(" + student + ") --> updated");
+        logger.info("update(" + student + ") --> updated");
     }
 
     public void delete(String name) {
@@ -79,6 +86,6 @@ public class StudentDao {
             session.commit();
             session.close();
         }
-        System.out.println("delete(" + name + ")");
+        logger.info("delete(" + name + ")");
     }
 }

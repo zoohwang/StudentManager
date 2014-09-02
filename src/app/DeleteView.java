@@ -1,6 +1,7 @@
 package app;
 
-import app.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 
@@ -8,6 +9,8 @@ import java.io.BufferedReader;
  * Created by zoohwang on 14. 9. 1.
  */
 public class DeleteView {
+
+    final static Logger logger = LoggerFactory.getLogger(AppMain.class);
 
     private BufferedReader br;
 
