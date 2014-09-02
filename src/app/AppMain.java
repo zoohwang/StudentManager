@@ -2,14 +2,15 @@ package app;
 
 import app.dao.StudentDao;
 import app.mybatis.MybatisConnectionFactory;
+import app.util.MessageLoader;
 import app.vo.Student;
 import jdk.nashorn.internal.objects.NativeArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by zoohwang on 14. 8. 28.
@@ -19,6 +20,16 @@ public class AppMain {
     final static Logger logger = LoggerFactory.getLogger(AppMain.class);
 
     public static void main(String[] args) {
+
+        MessageLoader loader = MessageLoader.getInstance();
+
+            try {
+                loader.initProps("properties.xml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        loader.getString("name");
 
         String userStr;
         int selectNo = 0;

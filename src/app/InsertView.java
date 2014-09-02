@@ -39,8 +39,9 @@ public class InsertView {
     public String inputStudentInfo(String item, String msg) {
 
         boolean isNext = false;
+        String title = String.format(Message.TEXT_FORMAT, item);
             do {
-                System.out.print(item);
+                System.out.print(title);
                 try {
                     userStr = br.readLine();
                     if(userStr.equals("1"))
