@@ -45,7 +45,7 @@ public class StudentDao {
         } finally {
             session.close();
         }
-        logger.info("selectById(" + name + ") --> " + student);
+//        logger.info("selectById(" + name + ") --> " + student);
         logger.info("selectById({}) --> {}", name, student);
         return student;
     }

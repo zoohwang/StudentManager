@@ -2,6 +2,10 @@ package app;
 
 /**
  * Created by zoohwang on 14. 8. 29.
+ *
+ * [2014.09.11]
+ * application 에 사용용되는 문구 및 안내 메시지의 유동 적인 관리를 위해
+ * properties.xml 로 대체.(현재 Message classs는 사용하지 않음)
  */
 public class Message {
     public static final String ERROR_FORMAT = "%s 은(는) 반드시 입력 해야 합니다.";

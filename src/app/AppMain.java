@@ -24,7 +24,7 @@ public class AppMain {
         MessageLoader loader = MessageLoader.getInstance();
 
             try {
-                loader.initProps("properties.xml");
+                loader.initProps("/properties.xml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -44,13 +44,13 @@ public class AppMain {
         List<Student> list;
 
         do {
-            System.out.println("===============================");
-            System.out.println("1. 조회");
-            System.out.println("2. 등록");
-            System.out.println("3. 삭제");
-            System.out.println("4. 전체 조회");
-            System.out.println("0. 종료");
-            System.out.println("===============================");
+            System.out.println(loader.getString("line"));
+            System.out.println(loader.getString("search"));
+            System.out.println(loader.getString("insert"));
+            System.out.println(loader.getString("delete"));
+            System.out.println(loader.getString("searchAll"));
+            System.out.println(loader.getString("end"));
+            System.out.println(loader.getString("line"));
 
             try {
                 userStr = br.readLine();
@@ -66,17 +66,17 @@ public class AppMain {
 
             switch (selectNo) {
                 case 1:
-                    System.out.println("조회");
+                    System.out.println(loader.getString("search"));
                     SearchView sv = new SearchView(br);
                     String searchName = sv.searchStudent();
                     student = studentDao.selectById(searchName);
-                    if(student != null) {
-                        logger.info("조회 결과 : " + student.toString());
-                    }
+
+                    System.out.println("조회 결과 : " + student.toString());
+
                     break;
 
                 case 2:
-                    System.out.println("등록");
+                    System.out.println(loader.getString("insert"));
 //                    Student student = new Student();
                     InsertView iv = new InsertView(br, student);
                     student = iv.insertStudent();
@@ -88,7 +88,7 @@ public class AppMain {
                     break;
 
                 case 3:
-                    System.out.println("삭제");
+                    System.out.println(loader.getString("delete"));
                     DeleteView dv = new DeleteView(br);
                     String deleteName = dv.deleteStudent();
                     studentDao.delete(deleteName);
@@ -101,19 +101,19 @@ public class AppMain {
                     }
                     break;
                 case 0:
-                    System.out.println("종료");
+                    System.out.println(loader.getString("end"));
                     break;
 
                 case 100:
-                    System.out.println("메뉴를 선택 하시오.");
+                    System.out.println(loader.getString("selectMenu"));
                     break;
 
                 default:
-                    System.out.println("잘못 누르셨습니다.");
+                    System.out.println(loader.getString("mistake"));
             }
 
         } while(selectNo != 0);
 
-        System.out.println("############## System Off ##############");
+        System.out.println(loader.getString("off"));
     }
 }

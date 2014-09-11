@@ -1,5 +1,7 @@
 package app;
 
+import app.util.MessageLoader;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -7,6 +9,8 @@ import java.io.IOException;
  * Created by zoohwang on 14. 9. 1.
  */
 public class SearchView {
+
+    MessageLoader loader = MessageLoader.getInstance();
 
     BufferedReader br;
 
@@ -16,12 +20,12 @@ public class SearchView {
 
     public String searchStudent() {
         String userStr = "";
-        System.out.println("======== 학생 정보 조회 ========");
-        System.out.println("1. 이전 메뉴");
-        System.out.println("==============================");
+        System.out.println(loader.getString("searchTitle"));
+        System.out.println(loader.getString("back"));
+        System.out.println(loader.getString("line"));
 
         do {
-            System.out.print("검색할 학생의 이름 : ");
+            System.out.print(loader.getString("searchName"));
             try {
                 userStr = br.readLine();
                 if(userStr.equals("1"))
