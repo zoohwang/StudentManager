@@ -6,4 +6,20 @@
     <entry key="major">학번</entry>
     <entry key="mobile">전화번호</entry>
     <entry key="errMsg">%s 은(는) 반드시 입력 해야 합니다</entry>
+    <entry key="back">1. 이전 메뉴</entry>
+    <entry key="search">1. 조회</entry>
+    <entry key="searchName">검색할 학생의 이름 :</entry>
+    <entry key="insert">2. 등록</entry>
+    <entry key="delete">3. 삭제</entry>
+    <entry key="deleteName">삭제할 학생의 이름 : </entry>
+    <entry key="searchAll">4. 전체조회</entry>
+    <entry key="end">0. 종료</entry>
+    <entry key="selectMenu">메뉴를 선택 하십시오</entry>
+    <entry key="mistake">잘못 누르셨습니다</entry>
+    <entry key="line">===============================</entry>
+    <entry key="off">############## System Off ##############</entry>
+    <entry key="searchTitle">======== 학생 정보 조회 ========</entry>
+    <entry key="insertTitle">=========== 학생등록 ===========</entry>
+    <entry key="deleteTitle">======== 학생 정보 삭제 ========</entry>
+    <entry key="textFormat">%-5s</entry>
 </properties>
