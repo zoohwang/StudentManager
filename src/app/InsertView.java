@@ -1,6 +1,5 @@
 package app;
 
-import app.util.MessageLoader;
 import app.vo.Student;
 
 import java.io.BufferedReader;
@@ -9,8 +8,6 @@ import java.io.BufferedReader;
  * Created by zoohwang on 14. 8. 28.
  */
 public class InsertView {
-
-    MessageLoader loader = MessageLoader.getInstance();
 
     private BufferedReader br;
     String userStr;
@@ -23,17 +20,17 @@ public class InsertView {
 
     public Student insertStudent() {
 
-        System.out.println(loader.getString("insertTitle"));
-        System.out.println(loader.getString("back"));
-        System.out.println(loader.getString("line"));
+        System.out.println("========== 학생 등록 ==========");
+        System.out.println("1. 이전 메뉴");
+        System.out.println("==============================");
 
-        student.setName(inputStudentInfo(loader.getString("name"), loader.getString("errMsg")));
+        student.setName(inputStudentInfo(Message.NAME, Message.ERROR_MSG_NAME));
         if(student.getName() == null) return null;
-        student.setNo(inputStudentInfo(loader.getString("no"), loader.getString("errMsg")));
+        student.setNo(inputStudentInfo(Message.NO, Message.ERROR_MSG_NO));
         if(student.getNo() == null) return null;
-        student.setMajor(inputStudentInfo(loader.getString("major"), loader.getString("errMsg")));
+        student.setMajor(inputStudentInfo(Message.MAJOR, Message.ERROR_MSG_MAJOR));
         if(student.getMajor() == null) return null;
-        student.setMobile(inputStudentInfo(loader.getString("mobile"), loader.getString("errMsg")));
+        student.setMobile(inputStudentInfo(Message.MOBILE, Message.ERROR_MSG_MOBILE));
         if(student.getMobile() == null) return null;
 
         return student;
@@ -42,9 +39,7 @@ public class InsertView {
     public String inputStudentInfo(String item, String msg) {
 
         boolean isNext = false;
-
-        // 입력 항목의 열을 맞추기 위해 format을 %-5s로 설정.
-        String title = String.format(loader.getString("textFormat"), item);
+        String title = String.format(Message.TEXT_FORMAT, item);
             do {
                 System.out.print(title);
                 try {
@@ -52,7 +47,7 @@ public class InsertView {
                     if(userStr.equals("1"))
                         return null;
                     if(userStr.equals("")) {
-                        System.out.println(String.format(msg, item));
+                        System.out.println(msg);
                     } else {
                         isNext = true;
                     }
