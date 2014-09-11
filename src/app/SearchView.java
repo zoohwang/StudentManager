@@ -32,7 +32,6 @@ public class SearchView {
                     return null;
                 if(userStr.equals("")) {
                     System.out.println(String.format(loader.getString("errMsg"), loader.getString("name")));
-                    System.out.println(Message.ERROR_MSG_NAME);
                 } else {
                     return userStr;
                 }
