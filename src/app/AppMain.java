@@ -69,9 +69,13 @@ public class AppMain {
                     System.out.println(loader.getString("search"));
                     SearchView sv = new SearchView(br);
                     String searchName = sv.searchStudent();
-                    student = studentDao.selectById(searchName);
-
-                    System.out.println("조회 결과 : " + student.toString());
+                    try {
+                        student = studentDao.selectById(searchName);
+                        System.out.println("조회 결과 : " + student.toString());
+                    } catch(NullPointerException e) {
+                        System.out.println("검색결과가 없습니다");
+                       logger.info("{}", e);
+                    }
 
                     break;
 
@@ -80,11 +84,10 @@ public class AppMain {
 //                    Student student = new Student();
                     InsertView iv = new InsertView(br, student);
                     student = iv.insertStudent();
-                    if(student != null) {
-                        logger.info("insert complet : {}", student.toString());
-                    }
+
                     //DB insert
-                    studentDao.insert(student);
+                    if(!studentDao.insert(student))
+                        System.out.println(loader.getString("insertFailed"));
                     break;
 
                 case 3:

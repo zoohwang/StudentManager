@@ -3,7 +3,7 @@
 <properties>
     <entry key="name">이름</entry>
     <entry key="no">학번</entry>
-    <entry key="major">학번</entry>
+    <entry key="major">학과</entry>
     <entry key="mobile">전화번호</entry>
     <entry key="errMsg">%s 은(는) 반드시 입력 해야 합니다</entry>
     <entry key="back">1. 이전 메뉴</entry>
@@ -21,5 +21,6 @@
     <entry key="searchTitle">======== 학생 정보 조회 ========</entry>
     <entry key="insertTitle">=========== 학생등록 ===========</entry>
     <entry key="deleteTitle">======== 학생 정보 삭제 ========</entry>
+    <entry key="insertFailed">등록되어 있는 학번입니다</entry>
     <entry key="textFormat">%-5s</entry>
 </properties>

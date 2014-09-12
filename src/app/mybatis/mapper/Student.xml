@@ -38,4 +38,8 @@
     <delete id="delete" parameterType="String">
         DELETE from students WHERE name = #{name}
     </delete>
+
+    <select id="selectByNo" parameterType="String" resultMap="result">
+        SELECT * FROM students WHERE no = #{no}
+    </select>
 </mapper>

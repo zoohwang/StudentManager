@@ -36,6 +36,24 @@ public class StudentDao {
         return list;
     }
 
+    public boolean invalidByNo(String no) {
+        Student student = null;
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            student = session.selectOne("Student.selectByNo", no);
+            if(student != null) {
+                logger.info("등록되어 있는 학번 [{}]", no);
+                return false;
+            }
+
+        } finally {
+            session.close();
+        }
+        return true;
+
+    }
+
     public Student selectById(String name) {
         Student student = null;
         SqlSession session = sqlSessionFactory.openSession();
@@ -50,9 +68,12 @@ public class StudentDao {
         return student;
     }
 
-    public int insert(Student student) {
+    public boolean insert(Student student) {
         int id = -1;
         SqlSession session = sqlSessionFactory.openSession();
+
+        if(!invalidByNo(student.getNo()))
+            return false;
 
         try {
             id = session.insert("Student.insert", student);
@@ -61,7 +82,7 @@ public class StudentDao {
             session.close();
         }
         logger.info("insert(" + student + ") --> " + student.getName());
-        return id;
+        return true;
     }
 
     public void update(Student student) {
