@@ -29,10 +29,13 @@ public class InsertView {
 
         student.setName(inputStudentInfo(loader.getString("name"), loader.getString("errMsg")));
         if(student.getName() == null) return null;
+
         student.setNo(inputStudentInfo(loader.getString("no"), loader.getString("errMsg")));
         if(student.getNo() == null) return null;
+
         student.setMajor(inputStudentInfo(loader.getString("major"), loader.getString("errMsg")));
         if(student.getMajor() == null) return null;
+
         student.setMobile(inputStudentInfo(loader.getString("mobile"), loader.getString("errMsg")));
         if(student.getMobile() == null) return null;
 
